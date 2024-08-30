@@ -12,7 +12,7 @@ let humanChoice = btnsHumanChoice.addEventListener('click', handleBtnClick);
 let humanScore = 0, computerScore = 0;
 
 function getComputerChoice () {
-  switch(parseInt(Math.random() * 2)) {
+  switch(parseInt(Math.random() * 3)) {
     case 0: return 'rock';
     case 1: return 'paper';
     case 2: return 'scissors';
@@ -20,10 +20,13 @@ function getComputerChoice () {
 }
 
 function handleBtnClick(event) {
-  let humanSelection = getHumanChoice(event.target.id);
-  let computerSelection = getComputerChoice();
+  const target = event.target.tagName === 'IMG' ? event.target.parentElement : event.target;
 
-  playRound(humanSelection, computerSelection);
+  if (target.classList.contains('user-choice')) {
+    let humanSelection = getHumanChoice(target.id);
+    let computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+  }
 }
 
 function getHumanChoice (targetID) {
@@ -75,7 +78,7 @@ function playRound(humanChoice, computerChoice) {
       break;
     default: break;
   }
-  outcome.textContent = `you ${status}! human: ${humanChoice} - computer: ${computerChoice}`;
+  outcome.textContent = `You ${status}! Human: ${humanChoice} - Computer: ${computerChoice}`;
   updateScore(status);
 }
 

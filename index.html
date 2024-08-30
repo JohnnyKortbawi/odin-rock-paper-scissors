@@ -8,9 +8,9 @@
 </head>
 <body>
   <div id="main-container">
-    <h1>Rock Paper Scissors</h1>
-    <div id="outcome"></div>
-    <div>
+    <div id="title">Rock Paper Scissors</div>
+    <div id="outcome">Press one of the buttons to play. First to 5 wins!</div>
+    <div id="scoreboard">
       <div id="user-score">
         You: 0
       </div>
@@ -19,12 +19,12 @@
       </div>
     </div>
     <div id="btns-human-choice">
-      <button id="btn-rock">Rock</button>
-      <button id="btn-paper">Paper</button>
-      <button id="btn-scissors">Scissors</button>
+      <button class="user-choice" id="btn-rock"><img class="btn-image" src="./images/rock.png" alt="Rock"></button>
+      <button class="user-choice" id="btn-paper"><img class="btn-image" src="./images/paper.png" alt="Paper"></button>
+      <button class="user-choice" id="btn-scissors"><img class="btn-image" src="./images/scissors.png" alt="Scissors"></button>
+      
     </div>
   </div>
- 
   <script src="./script.js"></script>
 </body>
 </html>
