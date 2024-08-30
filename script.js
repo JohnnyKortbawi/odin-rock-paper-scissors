@@ -1,3 +1,14 @@
+const btnsHumanChoice = document.querySelector('#btns-human-choice');
+const btnRock = document.querySelector('#btn-rock');
+const btnPaper = document.querySelector('#btn-paper');
+const btnScissors = document.querySelector('#btn-scissors');
+const outcome = document.querySelector('#outcome');
+const userScoreBoard = document.querySelector('#user-score');
+const computerScoreBoard = document.querySelector('#computer-score');
+
+
+let humanChoice = btnsHumanChoice.addEventListener('click', handleBtnClick); 
+
 let humanScore = 0, computerScore = 0;
 
 function getComputerChoice () {
@@ -8,23 +19,31 @@ function getComputerChoice () {
   }
 }
 
-function getHumanChoice () {
+function handleBtnClick(event) {
+  let humanSelection = getHumanChoice(event.target.id);
+  let computerSelection = getComputerChoice();
+
+  playRound(humanSelection, computerSelection);
+}
+
+function getHumanChoice (targetID) {
   let humanChoice = '';
-  do {
-    humanChoice = prompt('Type rock, paper, or scissors').toLowerCase();
 
-    if(humanChoice !== 'rock' 
-      && humanChoice !== 'paper'
-      && humanChoice !== 'scissors'
-    ) {
-      console.log('Invalid input!')
-    }
-    else return humanChoice;
+  switch(targetID) {
+    case 'btn-rock':
+      humanChoice = 'rock';
+      break;
+    
+    case 'btn-paper':
+      humanChoice = 'paper';
+      break;
 
-  } while (humanChoice !== 'rock' 
-    && humanChoice !== 'paper'
-    && humanChoice !== 'scissors'
-  )
+    case 'btn-scissors':
+      humanChoice = 'scissors';
+      break;
+  }
+
+  return humanChoice;
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -56,13 +75,15 @@ function playRound(humanChoice, computerChoice) {
       break;
     default: break;
   }
-  console.log(`you ${status}! human: ${humanChoice} - computer: ${computerChoice}`)
+  outcome.textContent = `you ${status}! human: ${humanChoice} - computer: ${computerChoice}`;
+  updateScore(status);
 }
 
-function playGame () {
-  for(let i=0; i<5; i++) {
-    computerSelection = getComputerChoice();
-    humanSelection = getHumanChoice();
-    playRound(humanSelection, computerSelection);
+function updateScore(status) {
+  if(status == 'win') {
+    userScoreBoard.textContent = `You: ${++humanScore}`;
+  }
+  else if (status == 'lose') {
+    computerScoreBoard.textContent = `Computer: ${++computerScore}`;
   }
 }
