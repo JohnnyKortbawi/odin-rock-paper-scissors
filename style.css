@@ -1,0 +1,74 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Roboto';
+  font-weight: bold;
+}
+
+button {
+  background-color: transparent;
+  border-radius: 50%;
+  border: 4px solid white;
+  padding: 24px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#btn-rock:hover {
+  background-color: rgba(128, 128, 128, 0.3);
+}
+#btn-rock:active {
+  background-color: rgb(78, 81, 87, 0.8);
+  transition: 0.1s;
+}
+
+#btn-paper:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+#btn-paper:active {
+  background-color: rgba(187, 187, 187, 0.8);
+  transition: 0.1s;
+}
+
+#btn-scissors:hover {
+  background-color: rgba(255, 0, 0, 0.3);
+}
+#btn-scissors:active {
+  background-color: rgba(255, 71, 71, 0.7);
+  transition: 0.1s;
+}
+
+#main-container {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#title {
+  font-size: 48px;
+}
+
+#scoreboard {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 16px;
+}
+
+#outcome {
+  height: 8px;
+}
+
+.btn-image {
+  width: 75px;
+}
+
+#btns-human-choice {
+  display: flex;
+  gap: 48px;
+}
