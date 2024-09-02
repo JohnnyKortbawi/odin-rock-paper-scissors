@@ -54,39 +54,51 @@ function playRound(humanChoice, computerChoice) {
   switch (humanChoice) {
     case 'rock':
       switch (computerChoice) {
-        case 'rock': status = 'draw'; break;
-        case 'paper': status = 'lose'; break;
-        case 'scissors': status = 'win'; break;
+        case 'rock': status = 'Draw'; break;
+        case 'paper': status = 'Loss'; break;
+        case 'scissors': status = 'Win'; break;
         default: break;
       }
       break;
     case 'paper':
       switch (computerChoice) {
-        case 'rock': status = 'win'; break;
-        case 'paper': status = 'draw'; break;
-        case 'scissors': status = 'lose'; break;
+        case 'rock': status = 'Win'; break;
+        case 'paper': status = 'Draw'; break;
+        case 'scissors': status = 'Loss'; break;
         default: break;
       }
       break;
     case 'scissors':
       switch (computerChoice) {
-        case 'rock': status = 'lose'; break;
-        case 'paper': status = 'win'; break;
-        case 'scissors': status = 'draw'; break;
+        case 'rock': status = 'Loss'; break;
+        case 'paper': status = 'Win'; break;
+        case 'scissors': status = 'Draw'; break;
         default: break;
       }
       break;
     default: break;
   }
-  outcome.textContent = `You ${status}! Human: ${humanChoice} - Computer: ${computerChoice}`;
+  outcome.textContent = `${status} | Human: ${humanChoice} - Computer: ${computerChoice}`;
   updateScore(status);
 }
 
-function updateScore(status) {
-  if(status == 'win') {
-    userScoreBoard.textContent = `You: ${++humanScore}`;
+function resetScore(score, message) {
+  if(score == 5) {
+    outcome.textContent = message;
+    userScoreBoard.textContent = 'Human: 0';
+    computerScoreBoard.textContent = 'Computer: 0';
+    humanScore = 0;
+    computerScore = 0;
   }
-  else if (status == 'lose') {
+}
+
+function updateScore(status) {
+  if(status == 'Win') {
+    userScoreBoard.textContent = `You: ${++humanScore}`;
+    resetScore(humanScore, 'You win!!! Click rock, paper, or scissors and start again...');
+  }
+  else if (status == 'Loss') {
     computerScoreBoard.textContent = `Computer: ${++computerScore}`;
+    resetScore(computerScore, 'Computer wins!!! Click rock, paper, or scissors and start again...')
   }
 }
